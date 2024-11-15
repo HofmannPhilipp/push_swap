@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/15 16:17:13 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:36:52 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ int main(int argc, char *argv[])
 		i ++;
 	}
 	print_array(a, b, size_a, size_b);
-	sa(a, size_a);
-	print_array(a, b, size_a, size_b);
-	pa(a ,b, &size_a, &size_b);
-	print_array(a, b, size_a, size_b);
+	pb(a, b, &size_a, &size_b);
 	pb(a, b, &size_a, &size_b);
 	print_array(a, b, size_a, size_b);
+	// rra(a, size_a);
+	// print_array(a, b, size_a, size_b);
 	free(a);
 	free(b);
 }
