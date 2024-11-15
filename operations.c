@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:27:59 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/15 11:24:18 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:17:43 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,59 @@ void	sb(int b[], int size)
 	b[0] = b[1];
 	b[1] = temp;
 }
+
 void	ss(int a[], int b[], int size_a, int size_b)
 {
 	sa(a, size_a);
 	sb(b, size_b);
+}
+
+void	pa(int a[],int b[], int *size_a, int *size_b)
+{
+	if (*size_b == 0)
+		return ;
+	ft_putstr_fd("pa\n", 1);
+	int i;
+
+	i = *size_a;
+	while (i > 0)
+	{
+		a[i] = a[i - 1];
+		i --;
+	}
+	*size_a += 1;
+	a[0] = b[0];
+	
+	i = 0;
+	while (i < *size_b)
+	{
+		b[i] = b[i + 1];
+		i++;
+	}
+	*size_b -= 1;
+}
+
+void	pb(int a[],int b[], int *size_a, int *size_b)
+{
+	if (*size_a == 0)
+		return ;
+	ft_putstr_fd("pb\n", 1);
+	int i;
+
+	i = *size_b;
+	while (i > 0)
+	{
+		b[i] = b[i - 1];
+		i --;
+	}
+	*size_b += 1;
+	b[0] = a[0];
+	
+	i = 0;
+	while (i < *size_a)
+	{
+		a[i] = a[i + 1];
+		i++;
+	}
+	*size_a -= 1;
 }

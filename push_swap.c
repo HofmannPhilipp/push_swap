@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/15 11:22:22 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:17:13 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,28 @@ int main(int argc, char *argv[])
 	int	i;
 	int	size_a;
 	int	size_b;
-	a = (int *)malloc(sizeof(int) * argc);
+	a = (int *)malloc(sizeof(int) * 5);
 	if (!a)
 		return (ft_putstr_fd("Error \n", 2),1);
-	b = (int *)malloc(sizeof(int) * argc);
+	b = (int *)malloc(sizeof(int) * 5);
 	if (!b)
 		return (free(a), ft_putstr_fd("Error \n", 2), 1);
 
-	i = 1;
 	size_a = argc - 1;
 	size_b = 0;
+	i = 1;
 	while (i < argc)
 	{
 		a[i - 1] = ft_atoi(argv[i]);
 		i ++;
 	}
-	// print_array(a, size_a);
+	print_array(a, b, size_a, size_b);
 	sa(a, size_a);
-	print_array(a, size_a);
+	print_array(a, b, size_a, size_b);
+	pa(a ,b, &size_a, &size_b);
+	print_array(a, b, size_a, size_b);
+	pb(a, b, &size_a, &size_b);
+	print_array(a, b, size_a, size_b);
 	free(a);
 	free(b);
 }
