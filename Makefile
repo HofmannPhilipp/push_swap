@@ -1,6 +1,6 @@
 CC = CC
 CFLAGS = -Wall -Werror -Wextra
-SRCS = push_swap.c
+SRCS = push_swap.c utils.c operations.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -14,6 +14,9 @@ $(NAME): $(LIBFT) $(OBJS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+debug:$(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME) -g
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
