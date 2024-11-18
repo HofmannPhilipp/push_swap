@@ -14,6 +14,7 @@ $(NAME): $(LIBFT) $(OBJS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) bonus
 
 debug:$(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME) -g
