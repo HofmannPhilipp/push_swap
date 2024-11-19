@@ -6,29 +6,32 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/19 13:21:00 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:37:55 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 
-// t_dnode	*init_dlst(char **values, int values_size)
-// {
-// 	t_dnode *dlst;
-// 	int		i;
+t_dnode	*init_dlst(char **values)
+{
+	t_dnode *a;
+	int		i;
+	int		value;
 
-// 	i = 0;
-// 	i = 1;
-// 	while(i < values_size)
-// 	{
-
-// 		int val = ft_atoi(values[i]);
-// 		// ft_lstadd_back(&a, ft_lstnew(val));
-// 		i ++;
-// 	}
-// 	return dlst;
-// }
+	i = 0;
+	a = NULL;
+	while(values[i] != NULL)
+	{
+		value = ft_atoi(values[i]);
+		if (!a)
+			a = create_dnode(value);
+		else
+			add_back_dlst(&a, create_dnode(value));
+		i ++;
+	}
+	return a;
+}
 
 t_dnode	*create_dnode(int value)
 {
@@ -98,11 +101,15 @@ int	get_dlst_size(t_dnode *head)
 	return (size);
 }
 
-void	print_dlst(t_dnode *a, t_dnode *b, int size_a, int size_b)
+void	print_dlst(t_dnode *a, t_dnode *b)
 {
 	int	i;
 	int	max;
+	int	size_a;
+	int	size_b;
 
+	size_a = get_dlst_size(a);
+	size_b = get_dlst_size(b);
 	i = 0;
 	if (size_a <= size_b)
 		max = size_b;
