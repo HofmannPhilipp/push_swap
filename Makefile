@@ -1,6 +1,6 @@
 CC = CC
 CFLAGS = -Wall -Werror -Wextra
-SRCS = push_swap.c utils.c operations.c
+SRCS = push_swap.c utils.c operations.c ./utils/list.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
