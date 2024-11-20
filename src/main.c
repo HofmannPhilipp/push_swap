@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 13:34:10 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:45:12 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int main(int argc, char *argv[])
 	else
 		values = argv + 1;
 	check_for_duplicates(values);
-	a = init_dlst(values);
+	a = init_dlist(values);
 	b = NULL;
-	print_dlst(a, b);
+	print_dlist(a, b);
 	ra(&a);
-	print_dlst(a, b);
+	print_dlist(a, b);
 	rra(&a);
-	print_dlst(a, b);
+	print_dlist(a, b);
 	// free(a);
 	// free(b);
 }

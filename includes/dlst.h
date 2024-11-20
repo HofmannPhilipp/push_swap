@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:36:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 08:33:48 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:44:58 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ typedef struct s_stack
 	int		size_b;
 }	t_stack;
 
-t_dnode	*init_dlst(char **values);
+t_dnode	*init_dlist(char **values);
 t_dnode	*create_dnode(int value);
-void	push_dlst(t_dnode **head, t_dnode *node);
-t_dnode *pop_dlst(t_dnode **head);
-t_dnode	*get_dlst_last(t_dnode *head);
-void	add_back_dlst(t_dnode **head, t_dnode *new_node);
-int		get_dlst_size(t_dnode *head);
-void	print_dlst(t_dnode *a, t_dnode *b);
+void	push_dlist(t_dnode **head, t_dnode *node);
+t_dnode *pop_dlist(t_dnode **head);
+t_dnode	*get_dlist_last(t_dnode *head);
+void	add_back_dlist(t_dnode **head, t_dnode *new_node);
+int		get_dlist_size(t_dnode *head);
+void	print_dlist(t_dnode *a, t_dnode *b);
 
 # endif

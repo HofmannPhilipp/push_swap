@@ -6,15 +6,30 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 13:40:57 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:09:50 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_dnode	*init_dlst(char **values)
+void	free_dlist(t_dnode **dlist)
+{
+	if (!dlist || !*dlist)
+		return ;
+	t_dnode *temp;
+	while (*dlist)
+	{
+		temp = *dlist;
+		*dlist = (*dlist)->next;
+		free(temp);
+	}
+	*dlist = NULL;
+}
+
+t_dnode	*init_dlist(char **values)
 {
 	t_dnode *a;
+	t_dnode *node;
 	int		i;
 	int		value;
 
@@ -24,9 +39,22 @@ t_dnode	*init_dlst(char **values)
 	{
 		value = ft_atoi_plus(values[i]);
 		if (!a)
+		{
 			a = create_dnode(value);
+			free_values(values);
+			handle_error();
+		}
 		else
-			add_back_dlst(&a, create_dnode(value));
+		{
+			node = create_dnode(value);
+			if (!node)
+			{
+				free_values(values);
+				free_dlist(&a);
+				handle_error();
+			}
+			add_back_dlist(&a, node);
+		}
 		i ++;
 	}
 	return a;
@@ -44,7 +72,7 @@ t_dnode	*create_dnode(int value)
 	node->prev = NULL;
 	return (node);
 }
-void	push_dlst(t_dnode **head, t_dnode *node)
+void	push_dlist(t_dnode **head, t_dnode *node)
 {
 	if (!node)
 		return ;
@@ -59,7 +87,7 @@ void	push_dlst(t_dnode **head, t_dnode *node)
 	(*head) = node;
 	node->prev = NULL;
 }
-t_dnode *pop_dlst(t_dnode **head)
+t_dnode *pop_dlist(t_dnode **head)
 {
 	t_dnode *node;
 
@@ -73,7 +101,7 @@ t_dnode *pop_dlst(t_dnode **head)
 	return (node);
 }
 
-t_dnode	*get_dlst_last(t_dnode *head)
+t_dnode	*get_dlist_last(t_dnode *head)
 {
 	if (!head)
 		return (NULL);
@@ -82,7 +110,7 @@ t_dnode	*get_dlst_last(t_dnode *head)
 	return (head);
 }
 
-void	add_back_dlst(t_dnode **head, t_dnode *new_node)
+void	add_back_dlist(t_dnode **head, t_dnode *new_node)
 {
 	t_dnode	*last;
 
@@ -90,13 +118,13 @@ void	add_back_dlst(t_dnode **head, t_dnode *new_node)
 		*head = new_node;
 	else
 	{
-		last = get_dlst_last(*head);
+		last = get_dlist_last(*head);
 		last->next = new_node;
 		new_node->prev = last;
 	}
 }
 
-int	get_dlst_size(t_dnode *head)
+int	get_dlist_size(t_dnode *head)
 {
 	int		size;
 
@@ -109,15 +137,15 @@ int	get_dlst_size(t_dnode *head)
 	return (size);
 }
 
-void	print_dlst(t_dnode *a, t_dnode *b)
+void	print_dlist(t_dnode *a, t_dnode *b)
 {
 	int	i;
 	int	max;
 	int	size_a;
 	int	size_b;
 
-	size_a = get_dlst_size(a);
-	size_b = get_dlst_size(b);
+	size_a = get_dlist_size(a);
+	size_b = get_dlist_size(b);
 	i = 0;
 	if (size_a <= size_b)
 		max = size_b;

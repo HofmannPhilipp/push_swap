@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 13:56:56 by phhofman          #+#    #+#             */
-/*   Updated: 2024/10/16 14:38:07 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:06:50 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*curr_node;
 	t_list	*next_node;
 
-	if (!lst && !*lst)
+	if (!lst || !*lst)
 		return ;
 	curr_node = *lst;
 	while (curr_node)

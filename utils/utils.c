@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:59:55 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 13:40:16 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:57:34 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@
 // 	return (1);
 
 // }
+
+void	free_values(char **values)
+{
+	int	i;
+
+	if (!values)
+		return ;
+	i = 0;
+	while (values[i] != NULL)
+	{
+		free(values[i]);
+		i++;
+	}
+	free(values);
+}
 
 void	handle_error(void)
 {
