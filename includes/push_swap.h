@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 08:33:44 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:20:56 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-// void	sa(t_list *a);
-// void	sb(t_list *a, int size);
-// void	ss(t_list *a, t_list *b, int size_a, int size_b);
-// void	pa(t_list **a, t_list **b, int *size_a, int *size_b);
-// void	pb(t_list **a,t_list **b, int *size_a, int *size_b);
-// void	ra(t_list **a, int size_a);
-// void	rb(t_list **b, int size_a);
-// void	rr(t_list **a, t_list **b, int size_a, int size_b);
-// void	rra(t_list **a, int size_a);
-// void	rrb(t_list **b, int size_a);
-// void	rrr(t_list **a, t_list **b, int size_a, int size_b);
+void	sa(t_dnode *a);
+void	sb(t_dnode *a);
+void	ss(t_dnode *a, t_dnode *b);
+void	pa(t_dnode **a, t_dnode **b);
+void	pb(t_dnode **a,t_dnode **b);
+void	ra(t_dnode **a);
+void	rb(t_dnode **b);
+void	rr(t_dnode **a, t_dnode **b);
+void	rra(t_dnode **a);
+void	rrb(t_dnode **b);
+void	rrr(t_dnode **a, t_dnode **b);
 
 #endif

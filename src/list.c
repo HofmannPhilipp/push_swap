@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 09:29:32 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:51:57 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	push_dlst(t_dnode **head, t_dnode *node)
 {
 	if (!node)
 		return ;
+	if (!(*head))
+	{
+		node->prev = NULL;
+		*head = node;
+		return ;
+	}
 	node->next = *head;
 	(*head)->prev = node;
 	(*head) = node;
@@ -58,9 +64,12 @@ t_dnode *pop_dlst(t_dnode **head)
 {
 	t_dnode *node;
 
+	if (!head || !*head)
+		return (NULL);
 	node = *head;
 	*head = (*head)->next;
-	(*head)->prev = NULL;
+	if (*head)
+		(*head)->prev = NULL;
 	node->next = NULL;
 	return (node);
 }
@@ -119,22 +128,23 @@ void	print_dlst(t_dnode *a, t_dnode *b)
 	{
 		if (i < size_a)
 		{
-			ft_putnbr_fd(a->value, 1);
+			ft_printf("%d", a->value);
 			a = a->next;
 		}
 		else 
-			ft_putchar_fd('x', 1);
-		ft_putchar_fd('\t',1);
+			ft_printf("x");
+		ft_printf("\t");
 		if (i < size_b)
 		{
-			ft_putnbr_fd(b->value, 1);
+			ft_printf("%d", b->value);
 			b = b->next;
 		}
 		else 
-			ft_putchar_fd('x', 1);
-		ft_putchar_fd('\n', 1);
+			ft_printf("x");
+		ft_printf("\t");
 		i ++;
+		ft_printf("\n");
 	}
-	ft_putstr_fd("_	_\n",1);
-	ft_putstr_fd("a	b\n",1);
+	ft_printf("_\t_\n");
+	ft_printf("a\tb\n");
 }

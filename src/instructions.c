@@ -6,138 +6,132 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:27:59 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 09:29:15 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:20:36 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void	sa(t_dnode *a)
-// {
-// 	if (!a || !a->next)
-// 		return ;
-// 	int	*temp;
-// 	ft_putstr_fd("sa\n", 1);
-// 	temp = (int *)a->value;
-// 	a->value = a->next->value;
-// 	a->next->value = temp;
-// }
-// void	sb(t_dnode *b, int size)
-// {
-// 	if (size <= 1)
-// 		return ;
-// 	int	*temp;
-// 	ft_putstr_fd("sb\n", 1);
-// 	temp = (int *)b->value;
-// 	b->value = b->next->value;
-// 	b->next->value = temp;
-// }
+void	sa(t_dnode *a)
+{
+	if (!a || !a->next)
+		return ;
+	int	temp;
+	ft_printf("sa\n");
+	temp = a->value;
+	a->value = a->next->value;
+	a->next->value = temp;
+}
+void	sb(t_dnode *b)
+{
+	if (!b || !b->next)
+		return ;
+	int	temp;
+	ft_printf("sa\n");
+	temp = b->value;
+	b->value = b->next->value;
+	b->next->value = temp;
+}
 
-// void	ss(t_dnode *a, t_dnode *b, int size_a, int size_b)
-// {
-// 	sa(a);
-// 	sb(b, size_b);
-// }
+void	ss(t_dnode *a, t_dnode *b)
+{
+	sa(a);
+	sb(b);
+}
 
-// void	pa(t_dnode **a, t_dnode **b, int *size_a, int *size_b)
-// {
-// 	if (*size_b == 0)
-// 		return ;
-// 	ft_putstr_fd("pa\n", 1);
-// 	t_dnode *node;
+void	pa(t_dnode **a, t_dnode **b)
+{
+	if (!*b || !(*b)->next)
+		return ;
+	ft_printf("pa\n");
+	t_dnode *node;
 
-// 	node = *b;
-// 	*b = (*b)->next;
-// 	ft_lstadd_front(a, node);
-// 	*size_a += 1;
-// 	*size_b -= 1;
-// }
+	node = pop_dlst(b);
+	push_dlst(a, node);
+}
 
-// void	pb(t_dnode **a, t_dnode **b, int *size_a, int *size_b)
-// {
-// 	if (*size_a == 0)
-// 		return ;
-// 	ft_putstr_fd("pb\n", 1);
-// 	t_dnode *node;
+void	pb(t_dnode **a, t_dnode **b)
+{
+	if (!*a || !(*a)->next)
+		return ;
+	ft_printf("pb\n");
+	t_dnode *node;
 
-// 	node = *a;
-// 	*a = (*a)->next;
-// 	ft_lstadd_front(b, node);
-// 	*size_b += 1;
-// 	*size_a -= 1;
-// }
+	node = pop_dlst(a);
+	push_dlst(b, node);
+}
 
-// void	ra(t_dnode **a, int size_a)
-// {
-// 	if (size_a <= 1)
-// 		return ;
-// 	ft_putstr_fd("ra\n", 1);
+void	ra(t_dnode **a)
+{
+	if (!*a || !(*a)->next)
+		return ;
+	ft_printf("ra\n");
 	
-// 	t_dnode *node_first;
+	t_dnode *first;
+	t_dnode *last;
 
-// 	node_first = *a;
-// 	ft_lstadd_back(a, node_first);
-// 	*a = (*a)->next;
-// 	node_first->next = NULL;
-// }
-// void	rb(t_dnode **b, int size_b)
-// {
-// 	if (size_b <= 1)
-// 		return ;
-// 	ft_putstr_fd("rb\n", 1);
-// 	t_dnode *node_first;
+	first = *a;
+	last = get_dlst_last(*a);
+	last->next = first;
+	*a = (*a)->next;
+	first->prev = last;
+	first->next = NULL;
+}
+void	rb(t_dnode **b)
+{
+	if (!*b || !(*b)->next)
+		return ;
+	ft_printf("rb\n");
+	
+	t_dnode *first;
+	t_dnode *last;
 
-// 	node_first = *b;
-// 	ft_lstadd_back(b, node_first);
-// 	*b = (*b)->next;
-// 	node_first->next = NULL;
-// }
+	first = *b;
+	last = get_dlst_last(*b);
+	last->next = first;
+	*b = (*b)->next;
+	first->prev = last;
+	first->next = NULL;
+}
 
-// void	rr(t_dnode **a, t_dnode **b, int size_a, int size_b)
-// {
-// 	ra(a, size_a);
-// 	rb(b, size_b);
-// }
-// void	rra(t_dnode **a, int size_a)
-// {
-// 	if (size_a <= 1)
-// 		return ;
-// 	ft_putstr_fd("rra\n", 1);
+void	rr(t_dnode **a, t_dnode **b)
+{
+	ra(a);
+	rb(b);
+}
+void	rra(t_dnode **a)
+{
+	if (!*a || !(*a)->next)
+		return ;
+	ft_printf("rra\n");
+	
+	t_dnode *last;
 
-// 	t_dnode *node_last;
-// 	t_dnode *node_second_last;
+	last = get_dlst_last(*a);
+	last->prev->next = NULL;
+	last->prev = NULL;
+	last->next = *a;
+	*a = last;
+}
 
-// 	node_last = *a;
-// 	while (node_last->next)
-// 	{
-// 		node_second_last = node_last;
-// 		node_last = node_last->next;
-// 	}
-// 	node_second_last->next = NULL;
-// 	ft_lstadd_front(a, node_last);
-// }
+void	rrb(t_dnode **b)
+{
+	if (!*b || !(*b)->next)
+		return ;
+	ft_printf("rrb\n");
+	
+	t_dnode *last;
 
-// void	rrb(t_dnode **b, int size_b)
-// {
-// 	if (size_b <= 1)
-// 		return ;
-// 	ft_putstr_fd("rra\n", 1);
+	last = get_dlst_last(*b);
+	if (last->prev)
+		last->prev->next = NULL;
+	last->prev = NULL;
+	last->next = *b;
+	*b = last;
+}
 
-// 	t_dnode *node_last;
-// 	t_dnode *node_second_last;
-
-// 	node_last = *b;
-// 	while (node_last->next)
-// 	{
-// 		node_second_last = node_last;
-// 		node_last = node_last->next;
-// 	}
-// 	node_second_last->next = NULL;
-// 	ft_lstadd_front(b, node_last);
-// }
-
-// void rrr(t_dnode **a, t_dnode **b, int size_a, int size_b)
-// {
-// 	rra(a, size_a);
-// 	rrb(b, size_b);
-// }
+void rrr(t_dnode **a, t_dnode **b)
+{
+	rra(a);
+	rrb(b);
+}

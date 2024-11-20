@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 08:36:02 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:13:23 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int main(int argc, char *argv[])
 		values = argv + 1;
 	a = init_dlst(values);
 	b = NULL;
-	// print_dlst(a, b);
+	print_dlst(a, b);
+	ra(&a);
+	print_dlst(a, b);
+	rra(&a);
+	print_dlst(a, b);
 	// free(a);
 	// free(b);
 }
