@@ -6,12 +6,11 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 10:51:57 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:40:57 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 t_dnode	*init_dlst(char **values)
 {
@@ -23,7 +22,7 @@ t_dnode	*init_dlst(char **values)
 	a = NULL;
 	while(values[i] != NULL)
 	{
-		value = ft_atoi(values[i]);
+		value = ft_atoi_plus(values[i]);
 		if (!a)
 			a = create_dnode(value);
 		else

@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 11:13:23 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:34:10 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(int argc, char *argv[])
 {
 	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
-		return (ft_putstr_fd("Error \n", 2),1);
+		handle_error();
 	char **values;
 	t_dnode *a;
 	t_dnode *b;
@@ -24,10 +24,11 @@ int main(int argc, char *argv[])
 		
 		values = ft_split(argv[1], ' ');
 		if (!values)
-			return (ft_putstr_fd("Error \n", 2),1);
+			handle_error();
 	}
 	else
 		values = argv + 1;
+	check_for_duplicates(values);
 	a = init_dlst(values);
 	b = NULL;
 	print_dlst(a, b);

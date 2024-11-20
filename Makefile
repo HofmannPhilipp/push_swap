@@ -2,7 +2,7 @@ CC = CC
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
 SRCS_DIR = ./src
-SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/instructions.c $(SRCS_DIR)/list.c
+SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/instructions.c $(SRCS_DIR)/list.c ./utils/utils.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./utils/libft
 LIBFT = $(LIBFT_DIR)/libft.a

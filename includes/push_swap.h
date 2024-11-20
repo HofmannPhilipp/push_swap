@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 11:20:56 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:00:08 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "dlst.h"
+# include "utils.h"
 # include "../utils/libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
