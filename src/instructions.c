@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:27:59 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 11:22:52 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:37:47 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	pa(t_dnode **a, t_dnode **b)
 	ft_printf("pa\n");
 	t_dnode *node;
 
-	node = pop_dlst(b);
-	push_dlst(a, node);
+	node = pop_dlist(b);
+	push_dlist(a, node);
 }
 
 void	pb(t_dnode **a, t_dnode **b)
@@ -57,8 +57,8 @@ void	pb(t_dnode **a, t_dnode **b)
 	ft_printf("pb\n");
 	t_dnode *node;
 
-	node = pop_dlst(a);
-	push_dlst(b, node);
+	node = pop_dlist(a);
+	push_dlist(b, node);
 }
 
 void	ra(t_dnode **a)
@@ -71,7 +71,7 @@ void	ra(t_dnode **a)
 	t_dnode *last;
 
 	first = *a;
-	last = get_dlst_last(*a);
+	last = get_dlist_last(*a);
 	last->next = first;
 	*a = (*a)->next;
 	first->prev = last;
@@ -87,7 +87,7 @@ void	rb(t_dnode **b)
 	t_dnode *last;
 
 	first = *b;
-	last = get_dlst_last(*b);
+	last = get_dlist_last(*b);
 	last->next = first;
 	*b = (*b)->next;
 	first->prev = last;
@@ -107,7 +107,7 @@ void	rra(t_dnode **a)
 	
 	t_dnode *last;
 
-	last = get_dlst_last(*a);
+	last = get_dlist_last(*a);
 	last->prev->next = NULL;
 	last->prev = NULL;
 	last->next = *a;
@@ -122,7 +122,7 @@ void	rrb(t_dnode **b)
 	
 	t_dnode *last;
 
-	last = get_dlst_last(*b);
+	last = get_dlist_last(*b);
 	if (last->prev)
 		last->prev->next = NULL;
 	last->prev = NULL;

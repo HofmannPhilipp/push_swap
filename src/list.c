@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 15:09:50 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:53:03 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ t_dnode	*init_dlist(char **values)
 		if (!a)
 		{
 			a = create_dnode(value);
-			free_values(values);
-			handle_error();
+			if (!a)
+			{
+				free_values(values);
+				handle_error();
+			}
 		}
 		else
 		{

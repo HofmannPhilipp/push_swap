@@ -24,16 +24,16 @@ FTPRINTF_OBJS = $(FTPRINTF_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(FTPRINTF_OBJS)
-	ar rcs $(NAME) $(OBJS) $(FTPRINTF_OBJS)
+	@ar rcs $(NAME) $(OBJS) $(FTPRINTF_OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(FTPRINTF_OBJS)
+	@rm -f $(OBJS) $(FTPRINTF_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 
 re: fclean all

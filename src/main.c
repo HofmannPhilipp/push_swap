@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 13:45:12 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:58:11 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,22 @@ int main(int argc, char *argv[])
 		values = ft_split(argv[1], ' ');
 		if (!values)
 			handle_error();
+		a = init_dlist(values);
+		free_values(values); 
 	}
 	else
+	{
 		values = argv + 1;
-	check_for_duplicates(values);
-	a = init_dlist(values);
+		a = init_dlist(values);
+	}
+	check_for_duplicates(&a);
 	b = NULL;
 	print_dlist(a, b);
 	ra(&a);
 	print_dlist(a, b);
 	rra(&a);
 	print_dlist(a, b);
-	// free(a);
-	// free(b);
+	free_dlist(&a);
+	free_dlist(&b);
+	exit(EXIT_SUCCESS);
 }

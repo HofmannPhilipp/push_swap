@@ -6,21 +6,25 @@ SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/instructions.c $(SRCS_DIR)/list.c ./utils/
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./utils/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-
+GREEN = \033[32m
+YELLOW = \033[33m
+NC = \033[0m
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+	@echo "$(GREEN)Compiled Successfully 😎$(NC)"
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	@echo "$(YELLOW)🚧Compiling🚧$(NC)"
+	@$(MAKE) -C $(LIBFT_DIR)
 
 debug:$(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME) -g
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

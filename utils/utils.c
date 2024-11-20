@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:59:55 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 14:57:34 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:49:49 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,21 @@ int	ft_atoi_plus(const char *str)
 	return (sign * sum);
 }
 
-void	check_for_duplicates(char **values)
+void	check_for_duplicates(t_dnode **head)
 {
-	int	i;
-	int	j;
+	t_dnode *left;
+	t_dnode *right;
 
-	i = 0;
-	while (values[i])
+	left = *head;
+	while (left)
 	{
-		j = i + 1;
-		while (values[j])
+		right = left->next;
+		while (right)
 		{
-			if (ft_strncmp(values[i], values[j], ft_strlen(values[i])) == 0)
+			if (left->value == right->value)
 				handle_error();
-			j++;
+			right = right->next;
 		}
-		i++;
+		left = left->next;
 	}
 }
