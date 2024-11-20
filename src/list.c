@@ -6,11 +6,11 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/19 14:37:55 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 09:29:32 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 
 t_dnode	*init_dlst(char **values)

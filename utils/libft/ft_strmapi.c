@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 09:59:55 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/19 13:17:26 by phhofman         ###   ########.fr       */
+/*   Created: 2024/10/15 12:27:42 by phhofman          #+#    #+#             */
+/*   Updated: 2024/10/15 13:02:14 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	is_sorted(int a[], int size_a)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
-	int	need_swap = 0;
+	size_t			s_len;
+	unsigned int	i;
+	char			*new_s;
 
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	new_s = (char *)malloc(sizeof(char) * (s_len + 1));
+	if (!new_s)
+		return (NULL);
 	i = 0;
-	while (i + 1 < size_a)
+	while (s[i])
 	{
-		if (a[i] > a[i + 1])
-		{
-			need_swap = 1;
-			break;
-		}
+		new_s[i] = f(i, s[i]);
 		i ++;
 	}
-	if (need_swap)
-	{
-		ft_putstr_fd("Not sorted\n",1);
-		return (0);
-	}
-	ft_putstr_fd("Sorted\n", 1);
-	return (1);
-
+	new_s[i] = '\0';
+	return (new_s);
 }

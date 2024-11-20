@@ -1,10 +1,11 @@
 CC = CC
 CFLAGS = -Wall -Werror -Wextra
-SRCS = push_swap.c utils.c operations.c ./utils/list.c
-OBJS = $(SRCS:.c=.o)
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
 NAME = push_swap
+SRCS_DIR = ./src
+SRCS = $(SRCS_DIR)/main.c $(SRCS_DIR)/instructions.c $(SRCS_DIR)/list.c
+OBJS = $(SRCS:.c=.o)
+LIBFT_DIR = ./utils/libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 
 all: $(NAME)
@@ -14,7 +15,6 @@ $(NAME): $(LIBFT) $(OBJS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
-	$(MAKE) -C $(LIBFT_DIR) bonus
 
 debug:$(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME) -g
@@ -29,6 +29,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
+
 
 
 re: fclean all

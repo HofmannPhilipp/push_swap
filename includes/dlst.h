@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:36:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/19 14:34:06 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 08:33:48 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-
+# include <limits.h>
 
 typedef struct s_dnode
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/19 14:34:11 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/20 08:36:02 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
  
 int main(int argc, char *argv[])
 {
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		values = argv + 1;
 	a = init_dlst(values);
 	b = NULL;
-	print_dlst(a, b);
+	// print_dlst(a, b);
 	// free(a);
 	// free(b);
 }
