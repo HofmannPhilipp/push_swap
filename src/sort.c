@@ -6,42 +6,81 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/22 10:24:48 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:03:37 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_max(t_dnode *dlist)
+t_dnode	*cmp(t_dnode *a, t_dnode *b)
 {
-	int	max;
-	int	index;
+	if ((a->value) > (b->value))
+		return (a);
+	return (b);
+}
+void	sort_three(t_dnode **dlist)
+{
+	t_dnode *max;
 
-	max = dlist->value;
-	index = dlist->index;
+	max = get_max(*dlist);
+	if (max->index == 0)
+		ra(dlist);
+	else if (max->index == 1)
+		rra(dlist);
+	if (!is_sorted(*dlist))
+		sa(*dlist);
+}
+
+
+t_dnode	*get_max(t_dnode *dlist)
+{
+	t_dnode	*max;
+
+	max = dlist;
 	while (dlist)
 	{
-		if (max < dlist->value)
-		{
-			max = dlist->value;
-			index = dlist->index;
-		}
+		max = cmp(max, dlist);
 		dlist = dlist->next;
 	}
 	return (max);
 }
 
-void	radix_sort(t_dnode **a, t_dnode **b)
+t_dnode	*get_min(t_dnode *dlist)
 {
-	int	max;
-	int	i;
+	t_dnode	*min;
 
-	max = get_max(&a);
-	i = 1;
-	while (max / i > 0)
+	min = dlist;
+	while (dlist)
 	{
-		
-		i *= 10;
+		if (min->value > dlist->value)
+			min = dlist;
+		dlist = dlist->next;
 	}
-
+	return (min);
 }
+
+// void	radix_sort(t_dnode **a, t_dnode **b)
+// {
+// 	int		max;
+// 	t_dnode	*curr;
+// 	int	i;
+// 	int	target;
+	
+// 	max = get_max(*a, &cmp)->value;
+// 	i = 1;
+	
+// 	while (max / i > 0)
+// 	{
+// 		curr = *a;
+// 		while (curr)
+// 		{
+// 			target = curr->value / i;
+
+// 			if (target == 0)
+// 			curr = curr->next;
+// 		}
+
+// 		i *= 10;
+// 	}
+
+// }
