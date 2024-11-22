@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 13:00:08 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:00:04 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+// instructions
 void	sa(t_dnode *a);
 void	sb(t_dnode *a);
 void	ss(t_dnode *a, t_dnode *b);
@@ -30,5 +31,7 @@ void	rr(t_dnode **a, t_dnode **b);
 void	rra(t_dnode **a);
 void	rrb(t_dnode **b);
 void	rrr(t_dnode **a, t_dnode **b);
+
+int	get_max(t_dnode *dlist);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/20 15:53:03 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:23:39 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_dnode	*init_dlist(char **values)
 		value = ft_atoi_plus(values[i]);
 		if (!a)
 		{
-			a = create_dnode(value);
+			a = create_dnode(value, i);
 			if (!a)
 			{
 				free_values(values);
@@ -49,7 +49,7 @@ t_dnode	*init_dlist(char **values)
 		}
 		else
 		{
-			node = create_dnode(value);
+			node = create_dnode(value, i);
 			if (!node)
 			{
 				free_values(values);
@@ -63,7 +63,7 @@ t_dnode	*init_dlist(char **values)
 	return a;
 }
 
-t_dnode	*create_dnode(int value)
+t_dnode	*create_dnode(int value, int index)
 {
 	t_dnode	*node;
 
@@ -71,6 +71,7 @@ t_dnode	*create_dnode(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->index = index;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
