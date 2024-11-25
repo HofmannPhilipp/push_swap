@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:36:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/22 10:22:52 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:37:00 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 typedef struct s_dnode
 {
-	int		value;
-	int		index;
+	int				value;
+	int				index;
+	struct s_dnode	*target;
 	struct s_dnode	*prev;
 	struct s_dnode	*next;
 }	t_dnode;
@@ -42,5 +43,6 @@ void	add_back_dlist(t_dnode **head, t_dnode *new_node);
 int		get_dlist_size(t_dnode *head);
 void	print_dlist(t_dnode *a, t_dnode *b);
 void	free_dlist(t_dnode **dlist);
+void	set_list_index(t_dnode **list);
 
 # endif

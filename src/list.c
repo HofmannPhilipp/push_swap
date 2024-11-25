@@ -6,11 +6,24 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/22 17:06:31 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:15:25 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	set_list_index(t_dnode **list)
+{
+	int	i;
+
+	i = 0;
+	while (*list)
+	{
+		(*list)->index = i;
+		i++;
+		*list = (*list)->next;
+	}
+}
 
 void	free_dlist(t_dnode **dlist)
 {

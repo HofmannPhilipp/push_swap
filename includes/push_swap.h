@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/22 17:03:48 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:16:16 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	rrr(t_dnode **a, t_dnode **b);
 
 t_dnode	*get_max(t_dnode *dlist);
 void	sort_three(t_dnode **dlist);
+void	set_target_node_min(t_dnode **a, t_dnode **b);
 
 
 #endif
