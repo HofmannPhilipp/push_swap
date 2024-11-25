@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/25 10:38:05 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:42:49 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,62 +77,159 @@ void	set_target_node_min(t_dnode **a, t_dnode **b)
 				min = curr_b;
 			curr_b = curr_b->next;
 		}
-		if (min > curr_a->value)
+		if (min->value > curr_a->value)
 			curr_a->target = get_max(*b);
 		else
 			curr_a->target = min;
-		ft_printf("v:%d	t:%d\n", curr_a->value, curr_a->target->value);
+		curr_a = curr_a->next;
+	}
+}
+void	set_target_node_max(t_dnode **a, t_dnode **b)
+{
+	t_dnode	*max;
+	t_dnode	*curr_a;
+	t_dnode *curr_b;
+
+	curr_a = *a;
+	while(curr_a)
+	{
+		curr_b = *b;
+		max = curr_b;
+		while (curr_b)
+		{
+
+			if (curr_b->value > curr_a->value && max->value > curr_b->value)
+				max = curr_b;
+			curr_b = curr_b->next;
+		}
+		if (max->value < curr_a->value)
+			curr_a->target = get_min(*b);
+		else
+			curr_a->target = max;
 		curr_a = curr_a->next;
 	}
 }
 
-int	calc_cheapest(t_dnode *a, t_dnode *b)
+void	calc_cheapest(t_dnode *a, t_dnode *b)
 {
-	int	min;
+	int	size_a;
+	int	size_b;
 
-	
+	size_a = get_dlist_size(a);
+	size_b = get_dlist_size(b);
+	while (a)
+	{
+		if (a->index <= size_a / 2)
+			a->cost = a->index;
+		else
+			a->cost = size_a - a->index;
+		if (a->target->index <= size_b / 2)
+			a->cost += a->target->index;
+		else
+			a->cost += size_b - a->target->index;
+		a = a->next;
+	}
+}
+t_dnode	*get_cheapest(t_dnode *list)
+{
+	t_dnode *cheapest;
+
+	cheapest = list;
+	while (list)
+	{
+		if (list->cost < cheapest->cost)
+			cheapest = list;
+		list = list->next;
+	}
+	return (cheapest);
 }
 
-// void	turk_sort(t_dnode **a, t_dnode **b)
-// {
-// 	while (!is_sorted(*a))
-// 	{
-// 		if(get_dlist_size(*a) == 3)
-// 		{
-// 			sort_three(a);
-// 			if (get_dlist_size(*b) > 0)
-// 			{
-// 				calc_cheapest(*a, *b);
-// 			}
-// 		}
-// 		pb(a, b);
-
-// 	}
-// }
+void	move_from_a_to_b(t_dnode **a, t_dnode **b)
+{
+	int	size_a;
+	int	size_b;
+	t_dnode	*cheapest;
 
 
-// void	radix_sort(t_dnode **a, t_dnode **b)
-// {
-// 	int		max;
-// 	t_dnode	*curr;
-// 	int	i;
-// 	int	target;
-	
-// 	max = get_max(*a, &cmp)->value;
-// 	i = 1;
-	
-// 	while (max / i > 0)
-// 	{
-// 		curr = *a;
-// 		while (curr)
-// 		{
-// 			target = curr->value / i;
+	size_a = get_dlist_size(*a);
+	size_b = get_dlist_size(*b);
 
-// 			if (target == 0)
-// 			curr = curr->next;
-// 		}
+	calc_cheapest(*a, *b);
+	cheapest = get_cheapest(*a);
 
-// 		i *= 10;
-// 	}
+	if (cheapest->index <= size_a / 2 && cheapest->target->index <= size_b / 2)
+	{
+		while (cheapest != *a && cheapest->target != *b)
+			rr(a, b);
+		while (cheapest != *a)
+			ra(a);
+		while (cheapest->target != *b)
+			rb(b);
+	}
+	else if (cheapest->index > size_a / 2 && cheapest->target->index > size_b / 2)
+	{
+		while (cheapest != *a && cheapest->target != *b)
+			rrr(a, b);
+		while (cheapest != *a)
+			rra(a);
+		while (cheapest->target != *b)
+			rrb(b);
+	}
+	else
+	{
+		if (cheapest->index <= size_a / 2)
+			while (cheapest != *a)
+				ra(a);
+		else
+			while (cheapest != *a)
+				rra(a);
+		if (cheapest->target->index <= size_b / 2)
+			while (cheapest->target != *b)
+				rb(b);
+		else
+			while (cheapest->target != *b)
+				rrb(b);
+	}
+}
 
-// }
+void	move_from_b_to_a(t_dnode **a, t_dnode **b)
+{
+	int	size_a;
+
+	size_a = get_dlist_size(*a);
+	if ((*b)->target->index <= size_a / 2)
+		while ((*b)->target != *a)
+			ra(a);
+	else 
+		while ((*b)->target != *a)
+			rra(a);
+	pa(a, b);
+}
+
+void	turk_sort(t_dnode **a, t_dnode **b)
+{
+
+	if (!is_sorted(*a) && get_dlist_size(*a) == 2)
+		return sa(*a);
+	if (!is_sorted(*a) && get_dlist_size(*a) > 3)
+		pb(a, b);
+	if (!is_sorted(*a) && get_dlist_size(*a) > 3)
+		pb(a, b);
+	while (!is_sorted(*a) && get_dlist_size(*a) > 3)
+	{
+		// set_list_index(a);
+		// set_list_index(b);
+		set_target_node_min(a, b);
+		move_from_a_to_b(a, b);
+		pb(a, b);
+	}
+	sort_three(a);
+	// set_list_index(a);
+	// set_list_index(b);
+	while (*b != NULL)
+	{
+		printf("HALLO");
+		set_target_node_max(b, a);
+		move_from_b_to_a(a, b);
+	}
+}

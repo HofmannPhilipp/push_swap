@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:59:55 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/21 10:47:34 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:41:54 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_sorted(t_dnode *dlist)
 	}
 	if (need_swap)
 	{
-		ft_printf("Not sorted\n");
+		// ft_printf("Not sorted\n");
 		return (0);
 	}
 	ft_printf("Sorted\n");

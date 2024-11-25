@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 09:37:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/25 10:15:25 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:29:45 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_dnode	*init_dlist(char **values)
 		}
 		i ++;
 	}
+	// a->size = i;
+	// a->mid = i / 2;
 	return a;
 }
 
@@ -192,4 +194,23 @@ void	print_dlist(t_dnode *a, t_dnode *b)
 	}
 	ft_printf("_\t_\n");
 	ft_printf("a\tb\n");
+}
+
+void print_node(t_dnode *node)
+{
+	if (!node)
+	{
+		printf("Node is NULL\n");
+		return;
+	}
+	printf("===== Node Details =====\n");
+	printf("Value: %d\n", node->value);
+	printf("Index: %d\n", node->index);
+	printf("Cost: %d\n", node->cost);
+
+	if (node->target)
+		printf("Target: [Value: %d, Index: %d]\n", node->target->value, node->target->index);
+	else
+		printf("Target: NULL\n");
+	printf("========================\n");
 }
