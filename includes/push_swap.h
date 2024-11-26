@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 10:44:41 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:02:20 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "list.h"
 # include "utils.h"
-# include "../utils/libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -32,10 +31,15 @@ void	rra(t_dnode **a);
 void	rrb(t_dnode **b);
 void	rrr(t_dnode **a, t_dnode **b);
 
+
+// sort
 void	sort_three(t_dnode **list);
-void	set_target_node_min(t_dnode **a, t_dnode **b);
-t_dnode	*get_cheapest_node(t_dnode *list);
 void	calc_cheapest(t_dnode *a, t_dnode *b);
 void	turk_sort(t_dnode **a, t_dnode **b);
+
+// rotate_helpers
+void	rotate_if_both_above_mid(t_dnode **a, t_dnode **b, t_dnode *cheapest);
+void	rotate_if_both_below_mid(t_dnode **a, t_dnode **b, t_dnode *cheapest);
+void	rotate_seperate(t_dnode **a, t_dnode **b, t_dnode *cheapest, int size_a, int size_b);
 
 #endif

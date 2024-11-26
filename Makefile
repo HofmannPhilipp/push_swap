@@ -3,12 +3,14 @@ CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
 SRCS_DIR = ./src
 UTILS_DIR = ./utils
-SRCS =	$(SRCS_DIR)/main.c $(SRCS_DIR)/sort.c \
+SRCS =	$(SRCS_DIR)/main.c \
+		$(SRCS_DIR)/sort/sort.c $(SRCS_DIR)/sort/rotate_helpers.c \
 		$(SRCS_DIR)/instructions/push.c $(SRCS_DIR)/instructions/swap.c \
 		$(SRCS_DIR)/instructions/rotate.c $(SRCS_DIR)/instructions/reverse_rotate.c \
 		$(SRCS_DIR)/list/init_list.c $(SRCS_DIR)/list/list_getters.c \
 		$(SRCS_DIR)/list/list_operations.c $(SRCS_DIR)/list/print_list.c $(SRCS_DIR)/list/free_list.c \
-		$(UTILS_DIR)/utils.c $(UTILS_DIR)/validation.c
+		$(UTILS_DIR)/utils.c $(UTILS_DIR)/validation.c \
+
 
 
 OBJS = $(SRCS:.c=.o)

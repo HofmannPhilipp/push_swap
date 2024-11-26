@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:36:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 14:24:02 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:14:48 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_stack
 // init_list
 t_dnode	*init_list(char **values);
 void	set_list_index(t_dnode *list);
+void	set_nearest_smaller_target(t_dnode **a, t_dnode **b);
+void	set_nearest_bigger_target(t_dnode **a, t_dnode **b);
 
 // list_operations
 t_dnode	*create_node(int value, int index);
@@ -53,6 +55,7 @@ t_dnode	*get_last_node(t_dnode *list);
 t_dnode	*get_max_node(t_dnode *list);
 t_dnode	*get_min_node(t_dnode *list);
 int		get_list_size(t_dnode *list);
+t_dnode	*get_cheapest_node(t_dnode *list);
 
 // print_list
 void	print_list(t_dnode *a, t_dnode *b);

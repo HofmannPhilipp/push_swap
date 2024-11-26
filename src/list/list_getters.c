@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:04:58 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 11:05:51 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:51:00 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ t_dnode	*get_last_node(t_dnode *list)
 	while (list->next)
 		list = list->next;
 	return (list);
+}
+t_dnode	*get_cheapest_node(t_dnode *list)
+{
+	t_dnode *cheapest;
+
+	cheapest = list;
+	while (list)
+	{
+		if (list->cost < cheapest->cost)
+			cheapest = list;
+		if (cheapest->cost == 0)
+			return (cheapest);
+		list = list->next;
+	}
+	return (cheapest);
 }
