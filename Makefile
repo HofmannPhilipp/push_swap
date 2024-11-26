@@ -2,8 +2,14 @@ CC = CC
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
 SRCS_DIR = ./src
-SRCS =	$(SRCS_DIR)/main.c $(SRCS_DIR)/instructions.c $(SRCS_DIR)/list.c ./utils/utils.c \
-		$(SRCS_DIR)/sort.c
+
+SRCS =	$(SRCS_DIR)/main.c $(SRCS_DIR)/sort.c \
+		$(SRCS_DIR)/instructions/push.c $(SRCS_DIR)/instructions/swap.c \
+		$(SRCS_DIR)/instructions/rotate.c $(SRCS_DIR)/instructions/reverse_rotate.c \
+		$(SRCS_DIR)/list/init_list.c $(SRCS_DIR)/list/list_getters.c \
+		$(SRCS_DIR)/list/list_operations.c $(SRCS_DIR)/list/print_list.c $(SRCS_DIR)/list/free_list.c \
+		./utils/utils.c
+
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./utils/libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -34,8 +40,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
-
-
 
 re: fclean all
 

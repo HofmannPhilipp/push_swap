@@ -6,57 +6,23 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 08:28:25 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:45:37 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_dnode	*cmp(t_dnode *a, t_dnode *b)
-{
-	if ((a->value) > (b->value))
-		return (a);
-	return (b);
-}
 void	sort_three(t_dnode **dlist)
 {
 	t_dnode *max;
 
-	max = get_max(*dlist);
+	max = get_max_node(*dlist);
 	if (max->index == 0)
 		ra(dlist);
 	else if (max->index == 1)
 		rra(dlist);
 	if (!is_sorted(*dlist))
 		sa(*dlist);
-}
-
-
-t_dnode	*get_max(t_dnode *dlist)
-{
-	t_dnode	*max;
-
-	max = dlist;
-	while (dlist)
-	{
-		max = cmp(max, dlist);
-		dlist = dlist->next;
-	}
-	return (max);
-}
-
-t_dnode	*get_min(t_dnode *dlist)
-{
-	t_dnode	*min;
-
-	min = dlist;
-	while (dlist)
-	{
-		if (min->value > dlist->value)
-			min = dlist;
-		dlist = dlist->next;
-	}
-	return (min);
 }
 
 void	set_target_node_min(t_dnode **a, t_dnode **b)
@@ -78,7 +44,7 @@ void	set_target_node_min(t_dnode **a, t_dnode **b)
 			curr_b = curr_b->next;
 		}
 		if (min->value > curr_a->value)
-			curr_a->target = get_max(*b);
+			curr_a->target = get_max_node(*b);
 		else
 			curr_a->target = min;
 		curr_a = curr_a->next;
@@ -93,13 +59,13 @@ void	set_target_node_max(t_dnode **a, t_dnode **b)
 	max = (*b);
 	while(curr_a)
 	{
-		if (curr_a->value > (*b)->value && max < curr_a->value)
+		if (curr_a->value > (*b)->value && max->value < curr_a->value)
 			max = curr_a;
 
 		curr_a = curr_a->next;
 	}
 	if (max->value == (*b)->value)
-		max = get_min(*a);
+		max = get_min_node(*a);
 	(*b)->target = max;
 }
 
@@ -108,8 +74,8 @@ void	calc_cheapest(t_dnode *a, t_dnode *b)
 	int	size_a;
 	int	size_b;
 
-	size_a = get_dlist_size(a);
-	size_b = get_dlist_size(b);
+	size_a = get_list_size(a);
+	size_b = get_list_size(b);
 	while (a)
 	{
 		if (a->index <= size_a / 2)
@@ -123,7 +89,7 @@ void	calc_cheapest(t_dnode *a, t_dnode *b)
 		a = a->next;
 	}
 }
-t_dnode	*get_cheapest(t_dnode *list)
+t_dnode	*get_cheapest_node(t_dnode *list)
 {
 	t_dnode *cheapest;
 
@@ -144,11 +110,11 @@ void	move_from_a_to_b(t_dnode **a, t_dnode **b)
 	t_dnode	*cheapest;
 
 
-	size_a = get_dlist_size(*a);
-	size_b = get_dlist_size(*b);
+	size_a = get_list_size(*a);
+	size_b = get_list_size(*b);
 
 	calc_cheapest(*a, *b);
-	cheapest = get_cheapest(*a);
+	cheapest = get_cheapest_node(*a);
 
 	if (cheapest->index <= size_a / 2 && cheapest->target->index <= size_b / 2)
 	{
@@ -189,7 +155,7 @@ void	move_from_b_to_a(t_dnode **a, t_dnode **b)
 {
 	int	size_a;
 
-	size_a = get_dlist_size(*a);
+	size_a = get_list_size(*a);
 	if ((*b)->target->index <= size_a / 2)
 		while ((*b)->target != *a)
 			ra(a);
@@ -202,13 +168,13 @@ void	move_from_b_to_a(t_dnode **a, t_dnode **b)
 void	turk_sort(t_dnode **a, t_dnode **b)
 {
 
-	if (!is_sorted(*a) && get_dlist_size(*a) == 2)
+	if (!is_sorted(*a) && get_list_size(*a) == 2)
 		return sa(*a);
-	if (!is_sorted(*a) && get_dlist_size(*a) > 3)
+	if (!is_sorted(*a) && get_list_size(*a) > 3)
 		pb(a, b);
-	if (!is_sorted(*a) && get_dlist_size(*a) > 3)
+	if (!is_sorted(*a) && get_list_size(*a) > 3)
 		pb(a, b);
-	while (!is_sorted(*a) && get_dlist_size(*a) > 3)
+	while (!is_sorted(*a) && get_list_size(*a) > 3)
 	{
 		set_list_index(*a);
 		set_list_index(*b);
@@ -220,7 +186,7 @@ void	turk_sort(t_dnode **a, t_dnode **b)
 	set_list_index(*b);
 	sort_three(a);
 	set_list_index(*a);
-	set_target_node_max(b, a);
+	// set_target_node_max(a, b);
 	// while (*b != NULL)
 	// {
 	// 	set_list_index(*a);

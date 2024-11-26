@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 07:56:57 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 14:30:51 by phhofman         ###   ########.fr       */
+/*   Created: 2024/11/26 10:51:03 by phhofman          #+#    #+#             */
+/*   Updated: 2024/11/26 10:51:48 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../includes/push_swap.h"
 
-# include "../utils/libft/libft.h"
+void	sa(t_dnode *a)
+{
+	if (!a || !a->next)
+		return ;
+	int	temp;
+	ft_printf("sa\n");
+	temp = a->value;
+	a->value = a->next->value;
+	a->next->value = temp;
+}
+void	sb(t_dnode *b)
+{
+	if (!b || !b->next)
+		return ;
+	int	temp;
+	ft_printf("sa\n");
+	temp = b->value;
+	b->value = b->next->value;
+	b->next->value = temp;
+}
 
-
-// validation
-int		ft_atoi_plus(const char *str);
-void	check_for_duplicates(t_dnode **values);
-void	handle_error(void);
-
-// utils
-void	free_values(char **values);
-int	is_sorted(t_dnode *dlist);
-void print_stacks(t_dnode *a, t_dnode *b);
-void ft_print_node(t_dnode *node);
-
-
-#endif
+void	ss(t_dnode *a, t_dnode *b)
+{
+	sa(a);
+	sb(b);
+}

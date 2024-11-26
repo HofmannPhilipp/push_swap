@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlst.h                                             :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:36:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 07:41:27 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:24:02 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DLST_H
-# define DLST_H
+#ifndef LIST_H
+# define LIST_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -37,16 +37,28 @@ typedef struct s_stack
 	int		size_b;
 }	t_stack;
 
-t_dnode	*init_dlist(char **values);
-t_dnode	*create_dnode(int value, int index);
-void	push_dlist(t_dnode **head, t_dnode *node);
-t_dnode *pop_dlist(t_dnode **head);
-t_dnode	*get_dlist_last(t_dnode *head);
-void	add_back_dlist(t_dnode **head, t_dnode *new_node);
-int		get_dlist_size(t_dnode *head);
-void	print_dlist(t_dnode *a, t_dnode *b);
-void	free_dlist(t_dnode **dlist);
+
+// init_list
+t_dnode	*init_list(char **values);
 void	set_list_index(t_dnode *list);
+
+// list_operations
+t_dnode	*create_node(int value, int index);
+void	push(t_dnode **list, t_dnode *node);
+t_dnode *pop(t_dnode **list);
+void	add_to_list_back(t_dnode **list, t_dnode *new_node);
+
+// list_getters
+t_dnode	*get_last_node(t_dnode *list);
+t_dnode	*get_max_node(t_dnode *list);
+t_dnode	*get_min_node(t_dnode *list);
+int		get_list_size(t_dnode *list);
+
+// print_list
+void	print_list(t_dnode *a, t_dnode *b);
 void	print_node(t_dnode *node);
+
+// free_list
+void	free_list(t_dnode **list);
 
 # endif

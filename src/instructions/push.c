@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 07:56:57 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 14:30:51 by phhofman         ###   ########.fr       */
+/*   Created: 2024/11/26 10:52:17 by phhofman          #+#    #+#             */
+/*   Updated: 2024/11/26 10:52:47 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../includes/push_swap.h"
 
-# include "../utils/libft/libft.h"
+void	pa(t_dnode **a, t_dnode **b)
+{
+	if (!*b || !(*b)->next)
+		return ;
+	ft_printf("pa\n");
+	t_dnode *node;
 
+	node = pop(b);
+	push(a, node);
+}
 
-// validation
-int		ft_atoi_plus(const char *str);
-void	check_for_duplicates(t_dnode **values);
-void	handle_error(void);
+void	pb(t_dnode **a, t_dnode **b)
+{
+	if (!*a || !(*a)->next)
+		return ;
+	ft_printf("pb\n");
+	t_dnode *node;
 
-// utils
-void	free_values(char **values);
-int	is_sorted(t_dnode *dlist);
-void print_stacks(t_dnode *a, t_dnode *b);
-void ft_print_node(t_dnode *node);
-
-
-#endif
+	node = pop(a);
+	push(b, node);
+}
