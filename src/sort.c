@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/25 17:42:49 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 08:28:25 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,26 +88,19 @@ void	set_target_node_max(t_dnode **a, t_dnode **b)
 {
 	t_dnode	*max;
 	t_dnode	*curr_a;
-	t_dnode *curr_b;
 
 	curr_a = *a;
+	max = (*b);
 	while(curr_a)
 	{
-		curr_b = *b;
-		max = curr_b;
-		while (curr_b)
-		{
+		if (curr_a->value > (*b)->value && max < curr_a->value)
+			max = curr_a;
 
-			if (curr_b->value > curr_a->value && max->value > curr_b->value)
-				max = curr_b;
-			curr_b = curr_b->next;
-		}
-		if (max->value < curr_a->value)
-			curr_a->target = get_min(*b);
-		else
-			curr_a->target = max;
 		curr_a = curr_a->next;
 	}
+	if (max->value == (*b)->value)
+		max = get_min(*a);
+	(*b)->target = max;
 }
 
 void	calc_cheapest(t_dnode *a, t_dnode *b)
@@ -217,19 +210,22 @@ void	turk_sort(t_dnode **a, t_dnode **b)
 		pb(a, b);
 	while (!is_sorted(*a) && get_dlist_size(*a) > 3)
 	{
-		// set_list_index(a);
-		// set_list_index(b);
+		set_list_index(*a);
+		set_list_index(*b);
 		set_target_node_min(a, b);
 		move_from_a_to_b(a, b);
 		pb(a, b);
 	}
+	// set_list_index(*a);
+	set_list_index(*b);
 	sort_three(a);
-	// set_list_index(a);
-	// set_list_index(b);
-	while (*b != NULL)
-	{
-		printf("HALLO");
-		set_target_node_max(b, a);
-		move_from_b_to_a(a, b);
-	}
+	set_list_index(*a);
+	set_target_node_max(b, a);
+	// while (*b != NULL)
+	// {
+	// 	set_list_index(*a);
+	// 	set_list_index(*b);
+		
+	// 	move_from_b_to_a(a, b);
+	// }
 }

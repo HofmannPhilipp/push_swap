@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:36:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/25 14:39:41 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/26 07:41:27 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	add_back_dlist(t_dnode **head, t_dnode *new_node);
 int		get_dlist_size(t_dnode *head);
 void	print_dlist(t_dnode *a, t_dnode *b);
 void	free_dlist(t_dnode **dlist);
-void	set_list_index(t_dnode **list);
+void	set_list_index(t_dnode *list);
 void	print_node(t_dnode *node);
 
 # endif
