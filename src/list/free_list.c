@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:11:11 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 11:11:29 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:24:54 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	free_list(t_dnode **list)
 {
 	if (!list || !*list)
 		return ;
+		
 	t_dnode *temp;
 	while (*list)
 	{

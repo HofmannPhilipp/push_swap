@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:59:55 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 14:30:39 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:32:28 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	handle_error(void)
 
 int	is_sorted(t_dnode *dlist)
 {
-	int	need_swap = 0;
+	int	need_swap;
 
-	
+	need_swap = 0;
+
 	while (dlist->next)
 	{
 		if (dlist->value > dlist->next->value)
@@ -33,11 +34,7 @@ int	is_sorted(t_dnode *dlist)
 		dlist = dlist->next;
 	}
 	if (need_swap)
-	{
-		// ft_printf("Not sorted\n");
 		return (0);
-	}
-	ft_printf("Sorted\n");
 	return (1);
 
 }

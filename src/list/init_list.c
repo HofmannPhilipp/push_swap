@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:06:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 16:50:29 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:29:26 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	set_list_index(t_dnode *list)
 {
 	int	i;
 
+	if (!list)
+		return ;
 	i = 0;
 	while (list)
 	{
@@ -63,7 +65,7 @@ void	set_list_index(t_dnode *list)
 }
 void	set_nearest_smaller_target(t_dnode **a, t_dnode **b)
 {
-	t_dnode	*min;
+	t_dnode	*nearest_smaller;
 	t_dnode	*curr_a;
 	t_dnode *curr_b;
 
@@ -71,35 +73,33 @@ void	set_nearest_smaller_target(t_dnode **a, t_dnode **b)
 	while(curr_a)
 	{
 		curr_b = *b;
-		min = curr_b;
+		nearest_smaller = NULL;
 		while (curr_b)
 		{
-			if (curr_b->value < curr_a->value && min->value < curr_b->value)
-				min = curr_b;
+			if (curr_b->value < curr_a->value && (!nearest_smaller || curr_b->value > nearest_smaller->value))
+				nearest_smaller = curr_b;
 			curr_b = curr_b->next;
 		}
-		if (min->value > curr_a->value)
-			curr_a->target = get_max_node(*b);
-		else
-			curr_a->target = min;
+		if (!nearest_smaller)
+			nearest_smaller = get_max_node(*b);
+		curr_a->target = nearest_smaller;
 		curr_a = curr_a->next;
 	}
 }
 void	set_nearest_bigger_target(t_dnode **a, t_dnode **b)
 {
-	t_dnode	*max;
+	t_dnode	*nearest_bigger;
 	t_dnode	*curr_a;
 
 	curr_a = *a;
-	max = (*b);
+	nearest_bigger = NULL;
 	while(curr_a)
 	{
-		if (curr_a->value > (*b)->value && max->value < curr_a->value)
-			max = curr_a;
-
+		if (curr_a->value > (*b)->value && (!nearest_bigger || curr_a->value < nearest_bigger->value))
+			nearest_bigger = curr_a;
 		curr_a = curr_a->next;
 	}
-	if (max->value == (*b)->value)
-		max = get_min_node(*a);
-	(*b)->target = max;
+	if (!nearest_bigger)
+		nearest_bigger = get_min_node(*a);
+	(*b)->target = nearest_bigger;
 }

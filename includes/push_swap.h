@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 17:02:20 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:28:48 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	sb(t_dnode *a);
 void	ss(t_dnode *a, t_dnode *b);
 void	pa(t_dnode **a, t_dnode **b);
 void	pb(t_dnode **a,t_dnode **b);
-void	ra(t_dnode **a);
-void	rb(t_dnode **b);
-void	rr(t_dnode **a, t_dnode **b);
-void	rra(t_dnode **a);
-void	rrb(t_dnode **b);
-void	rrr(t_dnode **a, t_dnode **b);
+void	ra(t_dnode **a, int print);
+void	rb(t_dnode **b, int print);
+void	rr(t_dnode **a, t_dnode **b, int print);
+void	rra(t_dnode **a, int print);
+void	rrb(t_dnode **b, int print);
+void	rrr(t_dnode **a, t_dnode **b, int print);
 
 
 // sort

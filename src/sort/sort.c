@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 17:19:46 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:30:36 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	sort_three(t_dnode **dlist)
 
 	max = get_max_node(*dlist);
 	if (max->index == 0)
-		ra(dlist);
+		ra(dlist, 1);
 	else if (max->index == 1)
-		rra(dlist);
+		rra(dlist, 1);
 	if (!is_sorted(*dlist))
 		sa(*dlist);
 }
@@ -72,11 +72,26 @@ void	move_from_b_to_a(t_dnode **a, t_dnode **b)
 	size_a = get_list_size(*a);
 	if ((*b)->target->index <= size_a / 2)
 		while ((*b)->target != *a)
-			ra(a);
+			ra(a, 1);
 	else 
 		while ((*b)->target != *a)
-			rra(a);
+			rra(a, 1);
 	pa(a, b);
+}
+
+void	move_min_to_top(t_dnode **a)
+{
+	int	size_a;
+	t_dnode *min;
+
+	size_a = get_list_size(*a);
+	min = get_min_node(*a);
+	if (min->index <= size_a / 2)
+		while (min->index != 0)
+			ra(a, 1);
+	else 
+		while (min->index != 0)
+			rra(a, 1);
 }
 
 void	turk_sort(t_dnode **a, t_dnode **b)
@@ -90,20 +105,16 @@ void	turk_sort(t_dnode **a, t_dnode **b)
 		pb(a, b);
 	while (!is_sorted(*a) && get_list_size(*a) > 3)
 	{
-		set_list_index(*a);
-		set_list_index(*b);
 		set_nearest_smaller_target(a, b);
 		move_from_a_to_b(a, b);
 		pb(a, b);
 	}
-	set_list_index(*a);
-	set_list_index(*b);
 	sort_three(a);
 	while (*b != NULL)
 	{
-		set_list_index(*a);
-		set_list_index(*b);
 		set_nearest_bigger_target(a, b);
 		move_from_b_to_a(a, b);
 	}
+	if (!is_sorted(*a))
+		move_min_to_top(a);
 }

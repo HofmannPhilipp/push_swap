@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:47 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 17:19:20 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:34:25 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int main(int argc, char *argv[])
 	}
 	check_for_duplicates(&a);
 	b = NULL;
-	print_stacks(a, b);
+	// print_stacks(a, b);
 	turk_sort(&a, &b);
-	print_stacks(a, b);
+	// print_stacks(a, b);
 	free_list(&a);
 	free_list(&b);
 	exit(EXIT_SUCCESS);

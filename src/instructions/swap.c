@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:51:03 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 10:51:48 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:49:01 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sa(t_dnode *a)
 	temp = a->value;
 	a->value = a->next->value;
 	a->next->value = temp;
+	set_list_index(a);
 }
 void	sb(t_dnode *b)
 {
@@ -31,6 +32,7 @@ void	sb(t_dnode *b)
 	temp = b->value;
 	b->value = b->next->value;
 	b->next->value = temp;
+	set_list_index(b);
 }
 
 void	ss(t_dnode *a, t_dnode *b)
