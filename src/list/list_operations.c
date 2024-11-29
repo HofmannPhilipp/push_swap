@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:08:37 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/27 13:26:25 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 09:00:54 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_dnode	*create_node(int value, int index)
 	node->prev = NULL;
 	return (node);
 }
+
 void	push(t_dnode **list, t_dnode *node)
 {
 	if (!node)
@@ -41,9 +42,10 @@ void	push(t_dnode **list, t_dnode *node)
 	(*list) = node;
 	node->prev = NULL;
 }
-t_dnode *pop(t_dnode **list)
+
+t_dnode	*pop(t_dnode **list)
 {
-	t_dnode *node;
+	t_dnode	*node;
 
 	if (!list || !*list)
 		return (NULL);

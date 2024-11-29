@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:51:03 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/27 09:49:01 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:48:11 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 void	sa(t_dnode *a)
 {
+	int	temp;
+
 	if (!a || !a->next)
 		return ;
-	int	temp;
 	ft_printf("sa\n");
 	temp = a->value;
 	a->value = a->next->value;
 	a->next->value = temp;
 	set_list_index(a);
 }
+
 void	sb(t_dnode *b)
 {
+	int	temp;
+
 	if (!b || !b->next)
 		return ;
-	int	temp;
 	ft_printf("sa\n");
 	temp = b->value;
 	b->value = b->next->value;

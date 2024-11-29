@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:52:17 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/27 09:50:46 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:43:50 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	pa(t_dnode **a, t_dnode **b)
 {
+	t_dnode	*node;
+
 	if (!*b)
 		return ;
 	ft_printf("pa\n");
-	t_dnode *node;
-
 	node = pop(b);
 	push(a, node);
 	set_list_index(*a);
@@ -27,11 +27,11 @@ void	pa(t_dnode **a, t_dnode **b)
 
 void	pb(t_dnode **a, t_dnode **b)
 {
+	t_dnode	*node;
+
 	if (!*a)
 		return ;
 	ft_printf("pb\n");
-	t_dnode *node;
-
 	node = pop(a);
 	push(b, node);
 	set_list_index(*a);

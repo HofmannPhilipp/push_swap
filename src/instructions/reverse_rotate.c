@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 09:27:59 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/27 14:27:16 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:45:03 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 void	rra(t_dnode **a, int print)
 {
+	t_dnode	*last;
+
 	if (!*a || !(*a)->next)
 		return ;
-	if(print == 1)
+	if (print == 1)
 		ft_printf("rra\n");
-	
-	t_dnode *last;
-
 	last = get_last_node(*a);
 	last->prev->next = NULL;
 	last->next = *a;
@@ -32,13 +31,12 @@ void	rra(t_dnode **a, int print)
 
 void	rrb(t_dnode **b, int print)
 {
+	t_dnode	*last;
+
 	if (!*b || !(*b)->next)
 		return ;
-	if(print == 1)
+	if (print == 1)
 		ft_printf("rrb\n");
-	
-	t_dnode *last;
-
 	last = get_last_node(*b);
 	if (last->prev)
 		last->prev->next = NULL;
@@ -49,9 +47,9 @@ void	rrb(t_dnode **b, int print)
 	set_list_index(*b);
 }
 
-void rrr(t_dnode **a, t_dnode **b, int print)
+void	rrr(t_dnode **a, t_dnode **b, int print)
 {
-	if(print == 1)
+	if (print == 1)
 		ft_printf("rrr\n");
 	rra(a, 0);
 	rrb(b, 0);

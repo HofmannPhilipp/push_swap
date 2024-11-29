@@ -6,49 +6,37 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 11:06:22 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/27 14:29:26 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:58:46 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-
 t_dnode	*init_list(char **values)
 {
-	t_dnode *a;
-	t_dnode *node;
+	t_dnode	*list;
+	t_dnode	*node;
 	int		i;
 	int		value;
 
 	i = 0;
-	a = NULL;
-	while(values[i] != NULL)
+	list = NULL;
+	while (values[i] != NULL)
 	{
 		value = ft_atoi_plus(values[i]);
-		if (!a)
+		node = create_node(value, i);
+		if (!node)
 		{
-			a = create_node(value, i);
-			if (!a)
-			{
-				free_values(values);
-				handle_error();
-			}
+			free_values(values);
+			free_list(&list);
+			handle_error();
 		}
-		else
-		{
-			node = create_node(value, i);
-			if (!node)
-			{
-				free_values(values);
-				free_list(&a);
-				handle_error();
-			}
-			add_to_list_back(&a, node);
-		}
+		add_to_list_back(&list, node);
 		i ++;
 	}
-	return a;
+	return (list);
 }
+
 void	set_list_index(t_dnode *list)
 {
 	int	i;
@@ -63,20 +51,22 @@ void	set_list_index(t_dnode *list)
 		list = list->next;
 	}
 }
+
 void	set_nearest_smaller_target(t_dnode **a, t_dnode **b)
 {
 	t_dnode	*nearest_smaller;
 	t_dnode	*curr_a;
-	t_dnode *curr_b;
+	t_dnode	*curr_b;
 
 	curr_a = *a;
-	while(curr_a)
+	while (curr_a)
 	{
 		curr_b = *b;
 		nearest_smaller = NULL;
 		while (curr_b)
 		{
-			if (curr_b->value < curr_a->value && (!nearest_smaller || curr_b->value > nearest_smaller->value))
+			if (curr_b->value < curr_a->value && \
+			(!nearest_smaller || curr_b->value > nearest_smaller->value))
 				nearest_smaller = curr_b;
 			curr_b = curr_b->next;
 		}
@@ -86,6 +76,7 @@ void	set_nearest_smaller_target(t_dnode **a, t_dnode **b)
 		curr_a = curr_a->next;
 	}
 }
+
 void	set_nearest_bigger_target(t_dnode **a, t_dnode **b)
 {
 	t_dnode	*nearest_bigger;
@@ -93,9 +84,10 @@ void	set_nearest_bigger_target(t_dnode **a, t_dnode **b)
 
 	curr_a = *a;
 	nearest_bigger = NULL;
-	while(curr_a)
+	while (curr_a)
 	{
-		if (curr_a->value > (*b)->value && (!nearest_bigger || curr_a->value < nearest_bigger->value))
+		if (curr_a->value > (*b)->value && \
+		(!nearest_bigger || curr_a->value < nearest_bigger->value))
 			nearest_bigger = curr_a;
 		curr_a = curr_a->next;
 	}

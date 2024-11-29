@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:24:46 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/26 14:25:22 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:47:49 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_atoi_plus(const char *str)
 		sum = sum * 10 + (*str - '0');
 		str ++;
 	}
-	if (!ft_isdigit(*str) && *str != '\0')
+	if (*str != '\0')
 		handle_error();
 	if (sign * sum > INT_MAX || sign * sum < INT_MIN)
 		handle_error();
@@ -48,8 +48,8 @@ int	ft_atoi_plus(const char *str)
 
 void	check_for_duplicates(t_dnode **head)
 {
-	t_dnode *left;
-	t_dnode *right;
+	t_dnode	*left;
+	t_dnode	*right;
 
 	left = *head;
 	while (left)

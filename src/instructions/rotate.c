@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:53:13 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/27 14:28:26 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:46:39 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	ra(t_dnode **a, int print)
 {
+	t_dnode	*first;
+	t_dnode	*last;
+
 	if (!*a || !(*a)->next)
 		return ;
-	
-	t_dnode *first;
-	t_dnode *last;
-
 	if (print == 1)
 		ft_printf("ra\n");
 	first = *a;
@@ -30,13 +29,14 @@ void	ra(t_dnode **a, int print)
 	first->next = NULL;
 	set_list_index(*a);
 }
+
 void	rb(t_dnode **b, int print)
 {
+	t_dnode	*first;
+	t_dnode	*last;
+
 	if (!*b || !(*b)->next)
 		return ;
-	
-	t_dnode *first;
-	t_dnode *last;
 	if (print == 1)
 		ft_printf("rb\n");
 	first = *b;
