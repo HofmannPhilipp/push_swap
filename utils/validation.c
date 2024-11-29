@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:24:46 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/29 13:27:37 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:17:14 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	ft_atoi_plus(const char *str)
 		str ++;
 	}
 	sum = 0;
-	if(!ft_isdigit(*str))
-			handle_error();
+	if (!ft_isdigit(*str))
+		handle_error();
 	while (*str != '\0')
 	{
-		if(!ft_isdigit(*str))
+		if (!ft_isdigit(*str))
 			handle_error();
 		sum = sum * 10 + (*str - '0');
 		str ++;
