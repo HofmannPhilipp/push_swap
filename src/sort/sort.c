@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/12/02 13:40:29 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:56:17 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	sort_three(t_dnode **dlist)
 	else if (max->index == 1)
 		rra(dlist, 1);
 	if (!is_sorted(*dlist))
-		sa(*dlist);
+		sa(*dlist, 1);
 }
 
 void	move_from_a_to_b(t_dnode **a, t_dnode **b)
@@ -79,7 +79,7 @@ void	turk_sort(t_dnode **a, t_dnode **b)
 	if (is_sorted(*a))
 		return ;
 	if (!is_sorted(*a) && get_list_size(*a) == 2)
-		return (sa(*a));
+		return (sa(*a, 1));
 	if (!is_sorted(*a) && get_list_size(*a) > 3)
 		pb(a, b);
 	if (!is_sorted(*a) && get_list_size(*a) > 3)

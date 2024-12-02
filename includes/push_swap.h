@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 07:53:51 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/29 09:13:33 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:54:39 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <stdlib.h>
 
 // instructions
-void	sa(t_dnode *a);
-void	sb(t_dnode *a);
-void	ss(t_dnode *a, t_dnode *b);
+void	sa(t_dnode *a, int print);
+void	sb(t_dnode *a, int print);
+void	ss(t_dnode *a, t_dnode *b, int print);
 void	pa(t_dnode **a, t_dnode **b);
 void	pb(t_dnode **a, t_dnode **b);
 void	ra(t_dnode **a, int print);
