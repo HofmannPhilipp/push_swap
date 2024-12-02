@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:50:18 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/29 09:13:22 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:40:29 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	move_min_to_top(t_dnode **a)
 
 void	turk_sort(t_dnode **a, t_dnode **b)
 {
+	if (is_sorted(*a))
+		return ;
 	if (!is_sorted(*a) && get_list_size(*a) == 2)
 		return (sa(*a));
 	if (!is_sorted(*a) && get_list_size(*a) > 3)
