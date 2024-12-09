@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:08:17 by phhofman          #+#    #+#             */
-/*   Updated: 2024/10/15 10:11:55 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:53:18 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	token_count = count_tokens(s, c);
+	if (token_count == 0)
+		return (NULL);
 	tokens = (char **)malloc(sizeof(char *) * (token_count + 1));
 	if (!tokens)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:24:46 by phhofman          #+#    #+#             */
-/*   Updated: 2024/12/09 10:49:25 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:53:01 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_atoi_plus(const char *str)
 	long	sum;
 
 	sign = 1;
-	while (ft_iswhitespace(*str) && *str)
+	while (ft_iswhitespace(*str) && *str != '\0')
 		str ++;
 	if (str[0] == '-' || str[0] == '+')
 	{
