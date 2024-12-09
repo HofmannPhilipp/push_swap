@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 14:24:46 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/29 14:17:14 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:49:25 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,29 @@ void	check_for_duplicates(t_dnode **head)
 		}
 		left = left->next;
 	}
+}
+
+t_dnode	*parse_arguments(int argc, char **argv)
+{
+	char	**values;
+	t_dnode	*a;
+
+	if (argc == 1)
+		exit(EXIT_FAILURE);
+	if (argc == 2 && argv[1][0] == '\0')
+		handle_error();
+	if (argc == 2)
+	{
+		values = ft_split(argv[1], ' ');
+		if (!values)
+			handle_error();
+		a = init_list(values);
+		free_values(values);
+	}
+	else
+	{
+		values = argv + 1;
+		a = init_list(values);
+	}
+	return (a);
 }

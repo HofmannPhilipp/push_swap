@@ -6,7 +6,7 @@
 /*   By: phhofman <phhofman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 07:56:57 by phhofman          #+#    #+#             */
-/*   Updated: 2024/11/29 09:11:49 by phhofman         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:46:44 by phhofman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int		ft_atoi_plus(const char *str);
 void	check_for_duplicates(t_dnode **values);
 void	handle_error(void);
+t_dnode	*parse_arguments(int argc, char **argv);
 
 // utils
 void	free_values(char **values);
